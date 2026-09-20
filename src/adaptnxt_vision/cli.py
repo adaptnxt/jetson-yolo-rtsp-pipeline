@@ -44,7 +44,7 @@ def main() -> None:
         print(pipeline_str)
         print("\nPass this string directly to cv2.VideoCapture(pipeline, cv2.CAP_GSTREAMER)\n")
     elif args.command == "demo":
-        from examples.live_zone_intrusion_demo import run_demo
+        from adaptnxt_vision.demo import run_demo
         run_demo()
     else:
         parser.print_help()

@@ -77,6 +77,10 @@ class InferenceEngine:
             from ultralytics import YOLO
             self._model = YOLO(self.model_path)
         except ImportError:
+            import logging
+            logging.getLogger("adaptnxt_vision").warning(
+                "[SIMULATION MODE] Ultralytics YOLO package is not installed. Running in mock simulation mode."
+            )
             self.mock_mode = True
 
     def infer(self, frame: Any, frame_id: int = 0) -> DetectionResult:
