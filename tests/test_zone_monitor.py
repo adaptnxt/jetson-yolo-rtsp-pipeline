@@ -1,6 +1,7 @@
 import pytest
 from adaptnxt_vision.zone_monitor import PolygonZone, ZoneMonitor
 from adaptnxt_vision.inference_engine import DetectionBox
+from adaptnxt_vision.exceptions import ZoneConfigurationError
 
 
 @pytest.fixture
@@ -10,6 +11,12 @@ def square_zone():
         name="test_box",
         vertices=[(100.0, 100.0), (200.0, 100.0), (200.0, 200.0), (100.0, 200.0)]
     )
+
+
+def test_zone_configuration_error():
+    with pytest.raises(ZoneConfigurationError):
+        PolygonZone(name="bad_zone", vertices=[(0.0, 0.0), (1.0, 1.0)])
+
 
 
 def test_polygon_contains_point(square_zone):

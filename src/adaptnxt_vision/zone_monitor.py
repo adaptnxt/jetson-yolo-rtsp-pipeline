@@ -9,6 +9,7 @@ import time
 from typing import Dict, List, Optional, Tuple
 
 from .inference_engine import DetectionBox
+from .exceptions import ZoneConfigurationError
 
 
 @dataclass
@@ -19,6 +20,7 @@ class Point:
 
 @dataclass
 class ZoneViolation:
+
     """Represents an intrusion or exclusion breach in a defined zone."""
     zone_name: str
     zone_type: str
@@ -42,11 +44,12 @@ class PolygonZone:
     """Represents a 2D polygonal region of interest on a camera frame."""
 
     def __init__(self, name: str, vertices: List[Tuple[float, float]], zone_type: str = "EXCLUSION_ZONE"):
-        if len(vertices) < 3:
-            raise ValueError("Polygon zone requires at least 3 vertices.")
+        if not isinstance(vertices, (list, tuple)) or len(vertices) < 3:
+            raise ZoneConfigurationError("Polygon zone requires at least 3 vertices.")
         self.name = name
         self.vertices = [Point(x=v[0], y=v[1]) for v in vertices]
         self.zone_type = zone_type
+
 
     def contains_point(self, pt: Tuple[float, float]) -> bool:
         """Determines if a 2D point (x, y) falls within the polygon using Ray Casting."""

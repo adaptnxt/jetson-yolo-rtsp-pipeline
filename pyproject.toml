@@ -25,6 +25,10 @@ dependencies = [
     "pydantic>=2.0.0"
 ]
 
+[project.scripts]
+adaptnxt-vision = "adaptnxt_vision.cli:main"
+
+
 [project.optional-dependencies]
 cv = [
     "opencv-python>=4.8.0",
