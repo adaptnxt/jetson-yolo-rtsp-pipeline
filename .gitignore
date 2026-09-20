@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Models and Weights (Avoid committing large weights to git)
+*.pt
+*.onnx
+*.engine
+*.weights
+*.tflite
+models/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.env
+.venv
+venv/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Captured video frames and debug screenshots
+debug_frames/
+recordings/
+*.mp4
+*.avi
+*.jpg
+*.png
+
+# IDEs
+.vscode/
+.idea/
+.DS_Store

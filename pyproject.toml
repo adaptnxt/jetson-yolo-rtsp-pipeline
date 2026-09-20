@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adaptnxt-jetson-yolo"
+version = "0.1.0"
+description = "Hardware-accelerated RTSP stream ingestion, YOLO inference, and polygonal zone intrusion detection for NVIDIA Jetson."
+readme = "README.md"
+authors = [
+  { name = "AdaptNXT Computer Vision Pod", email = "queries@adaptnxt.com" }
+]
+license = { text = "Apache-2.0" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+    "Topic :: Multimedia :: Video"
+]
+dependencies = [
+    "numpy>=1.23.0",
+    "pydantic>=2.0.0"
+]
+
+[project.optional-dependencies]
+cv = [
+    "opencv-python>=4.8.0",
+    "ultralytics>=8.0.0"
+]
+dev = [
+    "pytest>=7.0.0"
+]
+
+[project.urls]
+Homepage = "https://www.adaptnxt.com/edge-ai-development-company"
+Documentation = "https://github.com/adaptnxt/jetson-yolo-rtsp-pipeline#readme"
+Repository = "https://github.com/adaptnxt/jetson-yolo-rtsp-pipeline"
+"Computer Vision Services" = "https://www.adaptnxt.com/service-cv"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
